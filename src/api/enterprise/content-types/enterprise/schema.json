@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "enterprises",
+  "info": {
+    "singularName": "enterprise",
+    "pluralName": "enterprises",
+    "displayName": "Partnership",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "enterprise": {
+      "type": "string",
+      "required": true
+    },
+    "CNPJ": {
+      "type": "string"
+    },
+    "addresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::address.address",
+      "mappedBy": "partnership"
+    },
+    "entities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::entity.entity",
+      "mappedBy": "partnership"
+    },
+    "animals": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::animal.animal"
+    }
+  }
+}

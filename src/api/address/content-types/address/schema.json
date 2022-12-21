@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "addresses",
+  "info": {
+    "singularName": "address",
+    "pluralName": "addresses",
+    "displayName": "Address"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "addres": {
+      "type": "string",
+      "required": true
+    },
+    "number": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "district": {
+      "type": "string",
+      "required": true
+    },
+    "state": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "addres",
+      "required": true
+    },
+    "entity": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::entity.entity",
+      "inversedBy": "addresses"
+    },
+    "partnership": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::enterprise.enterprise",
+      "inversedBy": "addresses"
+    }
+  }
+}

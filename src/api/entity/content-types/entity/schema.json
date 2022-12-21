@@ -1,0 +1,84 @@
+{
+  "kind": "collectionType",
+  "collectionName": "entities",
+  "info": {
+    "singularName": "entity",
+    "pluralName": "entities",
+    "displayName": "entity",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "cpf": {
+      "type": "string",
+      "regex": "[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\-?[0-9]{2}",
+      "unique": true,
+      "required": true,
+      "maxLength": 11,
+      "minLength": 11
+    },
+    "dt_born": {
+      "required": true,
+      "type": "date"
+    },
+    "number": {
+      "type": "string",
+      "regex": "^\\(?[1-9]{2}\\)? ?(?:[2-8]|9[1-9])[0-9]{3}\\-?[0-9]{4}$",
+      "required": true,
+      "maxLength": 11,
+      "minLength": 11
+    },
+    "email": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "photo_user": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "Masculino",
+        "Feminino",
+        "Não identificar"
+      ],
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "cpf",
+      "required": true
+    },
+    "addresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::address.address",
+      "mappedBy": "entity"
+    },
+    "animal": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::animal.animal",
+      "inversedBy": "entities"
+    },
+    "partnership": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::enterprise.enterprise",
+      "inversedBy": "entities"
+    }
+  }
+}
